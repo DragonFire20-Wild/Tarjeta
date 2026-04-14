@@ -40,7 +40,6 @@
     background: #ff6700;
     padding: 10px;
     border-radius: 50%;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   }
 
   h1 {
@@ -64,7 +63,7 @@
     color: #ff6700;
   }
 
-  a.button {
+  .button {
     display: inline-block;
     margin-top: 25px;
     padding: 14px 30px;
@@ -74,17 +73,19 @@
     font-weight: bold;
     border-radius: 10px;
     font-size: 1.1em;
-    transition: all 0.3s ease;
+    cursor: pointer;
+    transition: 0.3s;
   }
 
-  a.button:hover {
+  .button:hover {
     background-color: #e55a00;
     transform: translateY(-3px);
   }
 
-  @media(max-width: 500px){
-    .card { padding: 25px; }
-    h1 { font-size: 1.6em; }
+  .footer {
+    font-size: 12px;
+    margin-top: 10px;
+    opacity: 0.7;
   }
 </style>
 </head>
@@ -103,7 +104,11 @@
     <p><strong>Web:</strong> unlockescaperoom.wordpress.com</p>
   </div>
 
-  <a class="button" onclick="guardarContacto()">Añadir contacto</a>
+  <div class="button" onclick="guardarContacto()">Añadir contacto</div>
+
+  <div class="footer">
+    Pulsa el botón para guardar el contacto
+  </div>
 </div>
 
 <script>
