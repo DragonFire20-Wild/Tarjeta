@@ -6,33 +6,75 @@
 <title>Contacto Saray Medinilla</title>
 
 <style>
-body{
-  font-family: Arial;
-  text-align:center;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  min-height:100vh;
-  background:linear-gradient(135deg,#000,#ff6700);
-  margin:0;
-}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-.card{
-  background:#fff8f0;
-  padding:30px;
-  border-radius:20px;
-  width:90%;
-  max-width:400px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.3);
-}
+  body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background: linear-gradient(135deg, #000000, #ff6700);
+  }
 
-h1{color:#ff6700}
+  .card {
+    background-color: #fff8f0;
+    border-radius: 20px;
+    max-width: 400px;
+    width: 100%;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    text-align: center;
+    position: relative;
+  }
 
-.qr{
-  margin:20px auto;
-  width:200px;
-  height:200px;
-}
+  .card::before {
+    content: "🔒";
+    font-size: 50px;
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ff6700;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  h1 {
+    margin-top: 40px;
+    font-size: 1.8em;
+    color: #ff6700;
+    margin-bottom: 15px;
+  }
+
+  .info {
+    text-align: left;
+    margin: 15px 0;
+  }
+
+  .info p {
+    margin: 8px 0;
+    font-size: 1em;
+    line-height: 1.4;
+  }
+
+  .info strong {
+    color: #ff6700;
+  }
+
+  .qr {
+    margin: 20px auto;
+    width: 200px;
+    height: 200px;
+  }
+
+  @media(max-width: 500px){
+    .card { padding: 25px; }
+    h1 { font-size: 1.6em; }
+  }
 </style>
 </head>
 
@@ -41,19 +83,22 @@ h1{color:#ff6700}
 <div class="card">
   <h1>Saray Medinilla</h1>
 
-  <p><strong>Unlock S.L</strong></p>
-  <p>Gerente</p>
-  <p>+34 677 14 28 47</p>
-  <p>saray.medgon@educa.jcyl.es</p>
+  <div class="info">
+    <p><strong>Organización:</strong> Unlock S.L</p>
+    <p><strong>Puesto:</strong> Gerente</p>
+    <p><strong>Email:</strong> saray.medgon@educa.jcyl.es</p>
+    <p><strong>Teléfono:</strong> +34 677 14 28 47</p>
+    <p><strong>Dirección:</strong> C/ de la Estación, 51, Miranda de Ebro</p>
+    <p><strong>Web:</strong> unlockescaperoom.wordpress.com</p>
+  </div>
 
   <div id="qr" class="qr"></div>
 
-  <p style="font-size:12px;">
-    Escanea para guardar el contacto
+  <p style="font-size:12px; margin-top:10px;">
+    Escanea para guardar contacto
   </p>
 </div>
 
-<!-- Librería QR -->
 <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 
 <script>
