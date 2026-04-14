@@ -6,38 +6,64 @@
 <title>Contacto Saray Medinilla</title>
 
 <style>
-body {
-  font-family: Arial;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #000, #ff6700);
-  margin: 0;
-}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-.card {
-  background: #fff8f0;
-  padding: 30px;
-  border-radius: 20px;
-  width: 90%;
-  max-width: 400px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-}
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background: linear-gradient(135deg, #000000, #ff6700);
+  }
 
-h1 { color: #ff6700; }
+  .card {
+    background-color: #fff8f0;
+    border-radius: 20px;
+    max-width: 400px;
+    width: 100%;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    position: relative;
+  }
 
-.button {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 15px 25px;
-  background: #ff6700;
-  color: white;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: bold;
-}
+  .card::before {
+    content: "🔒";
+    font-size: 50px;
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ff6700;
+    padding: 10px;
+    border-radius: 50%;
+  }
+
+  h1 { margin-top: 40px; color: #ff6700; }
+
+  .info { text-align: left; margin: 15px 0; }
+
+  .info p { margin: 8px 0; }
+
+  .info strong { color: #ff6700; }
+
+  a.button {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 14px 30px;
+    background-color: #ff6700;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  a.button:hover {
+    background-color: #e55a00;
+  }
 </style>
 </head>
 
@@ -46,23 +72,29 @@ h1 { color: #ff6700; }
 <div class="card">
   <h1>Saray Medinilla</h1>
 
-  <p><strong>Empresa:</strong> Unlock S.L</p>
-  <p><strong>Puesto:</strong> Gerente</p>
-  <p><strong>Email:</strong> saray.medgon@educa.jcyl.es</p>
-  <p><strong>Tel:</strong> +34 677 14 28 47</p>
+  <div class="info">
+    <p><strong>Organización:</strong> Unlock S.L</p>
+    <p><strong>Puesto:</strong> Gerente</p>
+    <p><strong>Email:</strong> saray.medgon@educa.jcyl.es</p>
+    <p><strong>Teléfono:</strong> +34 677 14 28 47</p>
+    <p><strong>Dirección:</strong> C/ de la Estación, 51, 09200 Miranda de Ebro</p>
+    <p><strong>Web:</strong> unlockescaperoom.wordpress.com</p>
+  </div>
 
-  <a class="button" href="#" onclick="guardarContacto()">Añadir contacto</a>
+  <a class="button" onclick="descargarContacto()">Añadir contacto</a>
 </div>
 
 <script>
-function guardarContacto() {
+function descargarContacto() {
 
-  const vcard = `BEGIN:VCARD
+  const vcard =
+`BEGIN:VCARD
 VERSION:3.0
+N:Medinilla;Saray;;;
 FN:Saray Medinilla
 ORG:Unlock S.L
 TITLE:Gerente
-TEL:+34677142847
+TEL;TYPE=CELL:+34677142847
 EMAIL:saray.medgon@educa.jcyl.es
 ADR:;;C/ de la Estación, 51, Miranda de Ebro, Burgos, España;;;;
 URL:https://unlockescaperoom.wordpress.com/
@@ -71,15 +103,13 @@ END:VCARD`;
   const blob = new Blob([vcard], { type: "text/vcard" });
   const url = URL.createObjectURL(blob);
 
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "saray_medinilla.vcf";
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "saray_medinilla.vcf";
 
-  document.body.appendChild(a);
-  a.click();
-
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
 </script>
 
