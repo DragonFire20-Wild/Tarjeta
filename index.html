@@ -58,17 +58,28 @@
   .info p {
     margin: 8px 0;
     font-size: 1em;
-    line-height: 1.4;
   }
 
   .info strong {
     color: #ff6700;
   }
 
-  .qr {
-    margin: 20px auto;
-    width: 200px;
-    height: 200px;
+  a.button {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 14px 30px;
+    background-color: #ff6700;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 10px;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+  }
+
+  a.button:hover {
+    background-color: #e55a00;
+    transform: translateY(-3px);
   }
 
   @media(max-width: 500px){
@@ -92,17 +103,13 @@
     <p><strong>Web:</strong> unlockescaperoom.wordpress.com</p>
   </div>
 
-  <div id="qr" class="qr"></div>
-
-  <p style="font-size:12px; margin-top:10px;">
-    Escanea para guardar contacto
-  </p>
+  <a class="button" onclick="guardarContacto()">Añadir contacto</a>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
-
 <script>
-const vcard =
+function guardarContacto() {
+
+  const vcard =
 `BEGIN:VCARD
 VERSION:3.0
 FN:Saray Medinilla
@@ -114,11 +121,19 @@ ADR:;;C/ de la Estación, 51, Miranda de Ebro, Burgos, España;;;;
 URL:https://unlockescaperoom.wordpress.com/
 END:VCARD`;
 
-new QRCode(document.getElementById("qr"), {
-  text: vcard,
-  width: 200,
-  height: 200
-});
+  const blob = new Blob([vcard], { type: "text/vcard" });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "saray_medinilla.vcf";
+
+  document.body.appendChild(a);
+  a.click();
+
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
 </script>
 
 </body>
