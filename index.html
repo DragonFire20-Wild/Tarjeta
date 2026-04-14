@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto Saray Medinilla</title>
+<style>
+  /* Reset básico */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    /* Fondo degradado elegante: negro y naranja */
+    background: linear-gradient(135deg, #000000, #ff6700);
+  }
+
+  .card {
+    background-color: #fff8f0;
+    border-radius: 20px;
+    max-width: 400px;
+    width: 100%;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    text-align: center;
+    position: relative;
+  }
+
+  /* Icono de candado de Escape Room */
+  .card::before {
+    content: "🔒";
+    font-size: 50px;
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ff6700;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  h1 {
+    margin-top: 40px;
+    font-size: 1.8em;
+    color: #ff6700;
+    margin-bottom: 15px;
+  }
+
+  .info {
+    text-align: left;
+    margin: 15px 0;
+  }
+
+  .info p {
+    margin: 8px 0;
+    font-size: 1em;
+    line-height: 1.4;
+  }
+
+  .info strong {
+    color: #ff6700;
+  }
+
+  a.button {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 14px 30px;
+    background-color: #ff6700;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 10px;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+  }
+
+  a.button:hover {
+    background-color: #e55a00;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+
+  /* Responsive */
+  @media(max-width: 500px){
+    .card { padding: 25px; }
+    h1 { font-size: 1.6em; }
+    a.button { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h1>Saray Medinilla</h1>
+  
+  <div class="info">
+    <p><strong>Organización:</strong> Unlock S.L</p>
+    <p><strong>Puesto:</strong> Gerente</p>
+    <p><strong>Email:</strong> <a href="mailto:saray.medgon@educa.jcyl.es">saray.medgon@educa.jcyl.es</a></p>
+    <p><strong>Teléfono:</strong> +34 677 14 28 47</p>
+    <p><strong>Dirección:</strong> C/ de la Estación, 51, 09200 Miranda de Ebro, Burgos, España</p>
+    <p><strong>Web:</strong> <a href="https://unlockescaperoom.wordpress.com/" target="_blank">unlockescaperoom.wordpress.com</a></p>
+  </div>
+
+  <a class="button" href="saray_medinilla.vcf" download>Añadir contacto</a>
+</div>
+
+</body>
+</html>
