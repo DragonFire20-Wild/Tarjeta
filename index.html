@@ -6,57 +6,37 @@
 <title>Contacto Saray Medinilla</title>
 
 <style>
-body{
+body {
   font-family: Arial;
-  text-align:center;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  min-height:100vh;
-  background:linear-gradient(135deg,#1a1a1a,#ff7a1a);
-  margin:0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #000, #ff6700);
+  margin: 0;
 }
 
-.card{
-  background:#fff;
-  padding:30px;
-  border-radius:25px;
-  width:90%;
-  max-width:420px;
-  box-shadow:0 15px 35px rgba(0,0,0,0.35);
-  border-top:6px solid #ff7a1a;
+.card {
+  background: #fff8f0;
+  padding: 30px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
-h1{
-  color:#ff7a1a;
-  font-size:1.8em;
-  margin-bottom:10px;
-}
+h1 { color: #ff6700; }
 
-p{
-  color:#333;
-  margin:8px 0;
-  font-size:1em;
-}
-
-strong{
-  color:#ff7a1a;
-}
-
-.qr{
-  margin:25px auto;
-  width:200px;
-  height:200px;
-  padding:10px;
-  background:#fff;
-  border-radius:15px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.1);
-}
-
-.footer-text{
-  font-size:12px;
-  margin-top:10px;
-  color:#777;
+.button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 15px 25px;
+  background: #ff6700;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
 }
 </style>
 </head>
@@ -66,24 +46,18 @@ strong{
 <div class="card">
   <h1>Saray Medinilla</h1>
 
-  <p><strong>Unlock S.L</strong></p>
-  <p>Gerente</p>
-  <p>+34 677 14 28 47</p>
-  <p>saray.medgon@educa.jcyl.es</p>
+  <p><strong>Empresa:</strong> Unlock S.L</p>
+  <p><strong>Puesto:</strong> Gerente</p>
+  <p><strong>Email:</strong> saray.medgon@educa.jcyl.es</p>
+  <p><strong>Tel:</strong> +34 677 14 28 47</p>
 
-  <div id="qr" class="qr"></div>
-
-  <p class="footer-text">
-    Escanea para guardar el contacto
-  </p>
+  <a class="button" href="#" onclick="guardarContacto()">Añadir contacto</a>
 </div>
 
-<!-- Librería QR -->
-<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
-
 <script>
-const vcard =
-`BEGIN:VCARD
+function guardarContacto() {
+
+  const vcard = `BEGIN:VCARD
 VERSION:3.0
 FN:Saray Medinilla
 ORG:Unlock S.L
@@ -94,11 +68,19 @@ ADR:;;C/ de la Estación, 51, Miranda de Ebro, Burgos, España;;;;
 URL:https://unlockescaperoom.wordpress.com/
 END:VCARD`;
 
-new QRCode(document.getElementById("qr"), {
-  text: vcard,
-  width: 200,
-  height: 200
-});
+  const blob = new Blob([vcard], { type: "text/vcard" });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "saray_medinilla.vcf";
+
+  document.body.appendChild(a);
+  a.click();
+
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
 </script>
 
 </body>
